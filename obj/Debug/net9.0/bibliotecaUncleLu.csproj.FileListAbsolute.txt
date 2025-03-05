@@ -1,0 +1,14 @@
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\bin\Debug\net9.0\bibliotecaUncleLu.exe
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\bin\Debug\net9.0\bibliotecaUncleLu.deps.json
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\bin\Debug\net9.0\bibliotecaUncleLu.runtimeconfig.json
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\bin\Debug\net9.0\bibliotecaUncleLu.dll
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\bin\Debug\net9.0\bibliotecaUncleLu.pdb
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.GeneratedMSBuildEditorConfig.editorconfig
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.AssemblyInfoInputs.cache
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.AssemblyInfo.cs
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.csproj.CoreCompileInputs.cache
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.dll
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\refint\bibliotecaUncleLu.dll
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.pdb
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.genruntimeconfig.cache
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\ref\bibliotecaUncleLu.dll
