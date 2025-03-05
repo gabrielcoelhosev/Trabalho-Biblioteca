@@ -1,4 +1,6 @@
-﻿public class Program
+﻿using System.Numerics;
+
+public class Program
 {
     private static void Main(string[] args)
     {
@@ -11,6 +13,14 @@
             1997,
             "Dura",
             208
+        );
+        
+        Leitor leitor1 = new Leitor(
+            "Gabriel",
+            10519810936,
+            "Masculino",
+            988955199,
+            "gabrielcoelhosev.dev@gmail.com"
         );
 
         Console.WriteLine(livro1.Titulo);
