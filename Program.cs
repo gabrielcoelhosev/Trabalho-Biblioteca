@@ -2,8 +2,17 @@
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Digite seu nome: ");
-        string nome = Console.ReadLine();
-        Console.WriteLine($"Olá {nome}!");
+        Livro livro1 = new Livro(
+            "Harry Potter",
+            "E a pedra filosofal",
+            "J.K Rowling",
+            "Rocco",
+            "Fantasia",
+            1997,
+            "Dura",
+            208
+        );
+
+        Console.WriteLine(livro1.Titulo);
     }
 }

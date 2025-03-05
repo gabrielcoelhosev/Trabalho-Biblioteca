@@ -12,3 +12,4 @@ C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\refint\biblio
 C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.pdb
 C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.genruntimeconfig.cache
 C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\ref\bibliotecaUncleLu.dll
+C:\www\Csharp\BibliotecaUncleLu\bibliotecaUncleLu\obj\Debug\net9.0\bibliotecaUncleLu.sourcelink.json
