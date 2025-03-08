@@ -22,6 +22,11 @@ class Leitor
         Livros.Remove(livro);
     }
 
+    public bool TemLivro(Livro livro)
+    {
+        return Livros.Contains(livro);
+    }
+
     public void ExibirLivros()
     {
         if(Livros.Count == 0)

@@ -122,4 +122,44 @@ public static class FuncoesBiblioteca
         leitor.RemoverLivro(livro);
         Console.WriteLine($"Livro '{livro.Titulo}' desvinculado do '{leitor.Nome}' com sucesso!");
     }
+
+    public static void DoarLivro()
+{
+    Console.WriteLine("Digite o nome do leitor doador no sistema:");
+    string? nomeSistemaDoador = Console.ReadLine();
+
+    if (!Leitores.TryGetValue(nomeSistemaDoador, out Leitor? leitorDoador))
+    {
+        Console.WriteLine("Leitor doador não encontrado!");
+        return;
+    }
+
+    Console.WriteLine("Digite o nome do leitor receptor no sistema:");
+    string? nomeSistemaReceptor = Console.ReadLine();
+
+    if (!Leitores.TryGetValue(nomeSistemaReceptor, out Leitor? leitorReceptor))
+    {
+        Console.WriteLine("Leitor receptor não encontrado!");
+        return;
+    }
+
+    Console.WriteLine("Digite o nome do livro no sistema que será doado:");
+    string? nomeSistemaLivro = Console.ReadLine();
+
+    if (!Livros.TryGetValue(nomeSistemaLivro, out Livro? livro))
+    {
+        Console.WriteLine("Livro não encontrado!");
+        return;
+    }
+
+    if (!leitorDoador.TemLivro(livro))
+    {
+        Console.WriteLine($"O livro '{livro.Titulo}' não está com o leitor '{leitorDoador.Nome}'!");
+        return;
+    }
+
+    leitorDoador.RemoverLivro(livro);
+    leitorReceptor.AdicionarLivro(livro);
+    Console.WriteLine($"Livro '{livro.Titulo}' doado de '{leitorDoador.Nome}' para '{leitorReceptor.Nome}' com sucesso!");
+}
 }
