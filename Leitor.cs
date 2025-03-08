@@ -27,11 +27,7 @@ class Leitor
         Console.WriteLine($"Livros de {Nome}");
         foreach (var livro in Livros)
         {
-            Console.WriteLine($"Título: {livro.Titulo}");
-            Console.WriteLine($"Escrito por: {livro.Escritor}");
-            Console.WriteLine($"Ano de publicação: {livro.Ano}");
-            Console.WriteLine($"Gênero: {livro.Genero}");
-
+            Console.WriteLine($"Título: {livro.Titulo}, Escrito por: {livro.Escritor}, Ano de publicação: {livro.Ano}, Gênero: {livro.Genero}");
         }
     }
 
