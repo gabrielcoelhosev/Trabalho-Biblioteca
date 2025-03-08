@@ -8,7 +8,7 @@ public class Program
         {
             Console.WriteLine("Bem Vindo a Bibliotéca do Zé!");
             Console.WriteLine("Digite 1 para cadastrar um leitor | 2 para listar os leitores | 3 cadastrar um livro | 4 para listar os livros");
-            Console.WriteLine("Digite 5 para vincular um livro a um leitor | 6 para desvincular o livro a um leitor | 7 para sair");
+            Console.WriteLine("Digite 5 para vincular um livro a um leitor | 6 para desvincular o livro a um leitor | 7 para doar um livro | 8 para sair");
             var Resposta = Console.ReadLine();
 
             switch (Resposta)
@@ -32,6 +32,9 @@ public class Program
                     FuncoesBiblioteca.DesvincularLivro();
                     break;
                 case "7":
+                    FuncoesBiblioteca.DoarLivro();
+                    break;
+                case "8":
                     return;
                 default:
                     Console.WriteLine("Saindo...");
