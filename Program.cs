@@ -13,7 +13,7 @@ public class Program
             switch (Resposta)
             {
                 case "1":
-                    //CadastrarLeitor();
+                    FuncoesBiblioteca.CadastrarLeitor();
                     break;
                 case "2":
                     //ListarLivros();
