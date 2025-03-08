@@ -1,18 +1,125 @@
 using System.Numerics;
+using System.Collections.Generic;
 
 public static class FuncoesBiblioteca
 {
+
+    private static Dictionary<string, Leitor> Leitores = new Dictionary<string, Leitor>();
+    private static Dictionary<string, Livro> Livros = new Dictionary<string, Livro>();
     public static void CadastrarLeitor()
     {
         BigInteger cpf;
 
-        Console.WriteLine("Digite um nome para o leitor");
-        String nome = Console.ReadLine();
-        Console.WriteLine("Digite um CPF do leitor");
+        Console.WriteLine("Digite um nome para o leitor: ");
+        String? nome = Console.ReadLine();
+        Console.WriteLine("Digite um CPF do leitor: ");
         BigInteger.TryParse(Console.ReadLine(), out cpf);
+        Console.WriteLine("Digite um nome para armazenar esse leitor no sistema: ");
+        string? NomeSitema = Console.ReadLine();
+        List<Livro> listaLeitor1 = new List<Livro>();
 
-        Leitor leitor1 = new Leitor(nome, cpf);
+        Leitor  NovoLeitor = new Leitor(nome, cpf);
 
-        Console.WriteLine($"Nome: {leitor1.Nome}, Cpf: {leitor1.Cpf}");
+        Leitores[NomeSitema] = NovoLeitor;
+
+    }
+
+    public static void Listarleitores()
+    {
+        if(Leitores.Count == 0){
+            Console.WriteLine("Nenhum leitor cadastrado. ");
+            return;
+        }
+
+        Console.WriteLine("Leitores Cadastrados");
+        foreach (var par in Leitores)
+        {
+            Console.WriteLine($"Nome no sistema: {par.Key}, Nome: {par.Value.Nome}, CPF: {par.Value.Cpf}");
+            par.Value.ExibirLivros();
+        }
+    }
+
+
+    public static void CadastrarLivro()
+    {
+        Console.WriteLine("Digite o titulo do livro: ");
+        String? Titulo = Console.ReadLine();
+        Console.WriteLine("Digite o nome do escritor: ");
+        String? Escritor = Console.ReadLine();
+        Console.WriteLine("Digite o genero do livro: ");
+        String? Genero = Console.ReadLine();
+        Console.WriteLine("Digite o ano de publicação do livro: ");
+        int Ano = int.Parse(Console.ReadLine());
+        Console.WriteLine("Digite um nome para armazenar no sistema:  ");
+        String? NomeSistema = Console.ReadLine();
+
+        Livro NovoLivro = new Livro(Titulo, Escritor, Genero, Ano);
+
+        Livros[NomeSistema] = NovoLivro;
+
+    }
+
+
+    public static void ListarLivros()
+    {
+        if(Livros.Count == 0)
+        {
+            Console.WriteLine("Nenhum livro cadastrado!");
+            return;
+        }
+
+        Console.WriteLine("Livros Cadastrados");
+        foreach(var lv in Livros)
+        {
+            Console.WriteLine($"Nome no sistema: {lv.Key}, Título: {lv.Value.Titulo}, Escritor: {lv.Value.Escritor}, Genero: {lv.Value.Genero}, Ano de publicação: {lv.Value.Ano}");
+        }
+    }
+
+    public static void VincularLivro()
+    {
+        Console.WriteLine("Digite o nome do leitor no sistema:");
+        string? nomeSistemaLeitor = Console.ReadLine();
+
+        if (!Leitores.TryGetValue(nomeSistemaLeitor, out Leitor? leitor))
+        {
+        Console.WriteLine("Leitor não encontrado!");
+        return;
+        }
+
+        Console.WriteLine("Digite o nome do livro no sistema:");
+        string? nomeSistemaLivro = Console.ReadLine();
+
+        if (!Livros.TryGetValue(nomeSistemaLivro, out Livro? livro))
+        {
+            Console.WriteLine("Livro não encontrado!");
+            return;
+        }
+
+        leitor.AdicionarLivro(livro);
+        Console.WriteLine($"Livro '{livro.Titulo}' vinculado ao leitor '{leitor.Nome}' com sucesso!");
+    }
+
+    public static void DesvincularLivro()
+    {
+        Console.WriteLine("Digite o nome do leitor no sistema:");
+        string? nomeSistemaLeitor = Console.ReadLine();
+
+        if (!Leitores.TryGetValue(nomeSistemaLeitor, out Leitor? leitor))
+        {
+        Console.WriteLine("Leitor não encontrado!");
+        return;
+        }
+
+        Console.WriteLine("Digite o nome do livro no sistema:");
+        string? nomeSistemaLivro = Console.ReadLine();
+
+        if (!Livros.TryGetValue(nomeSistemaLivro, out Livro? livro))
+        {
+            Console.WriteLine("Livro não encontrado!");
+            return;
+        }
+
+        leitor.RemoverLivro(livro);
+        Console.WriteLine($"Livro '{livro.Titulo}' desvinculado do '{leitor.Nome}' com sucesso!");
     }
 }

@@ -24,6 +24,11 @@ class Leitor
 
     public void ExibirLivros()
     {
+        if(Livros.Count == 0)
+        {
+            Console.WriteLine("Nenhum Livro Vinculado");
+        }
+
         Console.WriteLine($"Livros de {Nome}");
         foreach (var livro in Livros)
         {
