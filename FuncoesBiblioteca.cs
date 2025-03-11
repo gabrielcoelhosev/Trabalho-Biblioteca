@@ -101,7 +101,7 @@ public static class FuncoesBiblioteca
     {
         Console.Clear();
         Console.WriteLine("Digite o nome do leitor no sistema:");
-        string? nomeSistemaLeitor = Console.ReadLine();
+        string? nomeSistemaLeitor = Console.ReadLine().ToUpper();
 
         if (!Leitores.TryGetValue(nomeSistemaLeitor, out Leitor? leitor))
         {
