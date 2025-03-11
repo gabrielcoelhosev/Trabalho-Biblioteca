@@ -8,24 +8,32 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\coelh\\.nuget\\packages\\": {}
+    "C:\\Users\\leand\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\www\\Faculdade\\Trabalho-Biblioteca\\bibliotecaUncleLu.csproj",
+      "projectUniqueName": "C:\\TrabalhoTiolu\\Trabalho-Biblioteca\\bibliotecaUncleLu.csproj",
       "projectName": "bibliotecaUncleLu",
-      "projectPath": "C:\\www\\Faculdade\\Trabalho-Biblioteca\\bibliotecaUncleLu.csproj",
-      "packagesPath": "C:\\Users\\coelh\\.nuget\\packages\\",
-      "outputPath": "C:\\www\\Faculdade\\Trabalho-Biblioteca\\obj\\",
+      "projectPath": "C:\\TrabalhoTiolu\\Trabalho-Biblioteca\\bibliotecaUncleLu.csproj",
+      "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
+      "outputPath": "C:\\TrabalhoTiolu\\Trabalho-Biblioteca\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\coelh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\leand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
