@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bibliotecaUncleLu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53f33ade6efeae4e6adf1d0bf25d47390e21a2c0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f630ce5097fbc31fff60eb77924c797b8ff2577")]
 [assembly: System.Reflection.AssemblyProductAttribute("bibliotecaUncleLu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bibliotecaUncleLu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

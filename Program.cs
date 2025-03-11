@@ -5,18 +5,20 @@ public class Program
     public static void Main(string[] args)
     {       
         while (true)
+    
         {
+            
             Console.WriteLine("\t \t \t \t \t \t Bem Vindo a Bibliotéca do Zé!");
             Console.WriteLine("==================================================================================================================");
             Console.WriteLine("Digite (1) para cadastrar um leitor");
             Console.WriteLine("=========================");
             Console.WriteLine("(2) para listar os leitores");
             Console.WriteLine("==========================");
-            Console.WriteLine("3 para cadastrar um livro ");
+            Console.WriteLine("(3) para cadastrar um livro ");
             Console.WriteLine("==========================");
-            Console.WriteLine("4 ´para listar os livros ");
+            Console.WriteLine("(4) para listar os livros ");
             Console.WriteLine("==========================");
-            Console.WriteLine("Digite 5 para vincular um livro a um leitor");
+            Console.WriteLine("(5) para vincular um livro a um leitor");
             Console.WriteLine("==========================");
             Console.WriteLine("(6) para desvincular o liro de um leiotr ");
             Console.WriteLine("==========================");
@@ -32,6 +34,7 @@ public class Program
                 case "1":
                     FuncoesBiblioteca.CadastrarLeitor();
                     break;
+                
                 case "2":
                     FuncoesBiblioteca.Listarleitores();
                     break;
@@ -55,7 +58,8 @@ public class Program
                 default:
                     Console.WriteLine("Saindo...");
                     break; 
-            }   
+            } 
+           
         }
     }
 }

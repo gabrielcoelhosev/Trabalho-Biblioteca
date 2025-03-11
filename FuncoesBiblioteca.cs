@@ -7,7 +7,9 @@ public static class FuncoesBiblioteca
     private static Dictionary<string, Leitor> Leitores = new Dictionary<string, Leitor>();
     private static Dictionary<string, Livro> Livros = new Dictionary<string, Livro>();
     public static void CadastrarLeitor()
+    
     {
+        Console.Clear();
         BigInteger cpf;
 
         Console.WriteLine("Digite um nome para o leitor: ");
@@ -26,6 +28,7 @@ public static class FuncoesBiblioteca
 
     public static void Listarleitores()
     {
+        Console.Clear();
         if(Leitores.Count == 0){
             Console.WriteLine("Nenhum leitor cadastrado. ");
             return;
@@ -34,7 +37,12 @@ public static class FuncoesBiblioteca
         Console.WriteLine("Leitores Cadastrados");
         foreach (var par in Leitores)
         {
-            Console.WriteLine($"Nome no sistema: {par.Key}, Nome: {par.Value.Nome}, CPF: {par.Value.Cpf}");
+            Console.WriteLine($"Nome no sistema: {par.Key}");
+            Console.WriteLine("=====================");
+            Console.WriteLine($"Nome:{par.Value.Nome}");
+            Console.WriteLine("=====================");
+            Console.WriteLine($"CPF{par.Value.Cpf}");
+            Console.WriteLine("=====================");
             par.Value.ExibirLivros();
         }
     }
@@ -42,6 +50,7 @@ public static class FuncoesBiblioteca
 
     public static void CadastrarLivro()
     {
+        Console.Clear();
         Console.WriteLine("Digite o titulo do livro: ");
         String? Titulo = Console.ReadLine();
         Console.WriteLine("Digite o nome do escritor: ");
@@ -64,6 +73,7 @@ public static class FuncoesBiblioteca
     {
         if(Livros.Count == 0)
         {
+            
             Console.WriteLine("Nenhum livro cadastrado!");
             return;
         }
@@ -71,17 +81,27 @@ public static class FuncoesBiblioteca
         Console.WriteLine("Livros Cadastrados");
         foreach(var lv in Livros)
         {
-            Console.WriteLine($"Nome no sistema: {lv.Key}, Título: {lv.Value.Titulo}, Escritor: {lv.Value.Escritor}, Genero: {lv.Value.Genero}, Ano de publicação: {lv.Value.Ano}");
+            Console.WriteLine($"Nome no sistema: {lv.Key}");
+            Console.WriteLine("=========================");
+            Console.WriteLine($"Título: {lv.Value.Titulo}");
+            Console.WriteLine("=========================");
+            Console.WriteLine($"Escritor: {lv.Value.Escritor}");
+            Console.WriteLine("=========================");
+            Console.WriteLine($"Genero: {lv.Value.Genero}");
+            Console.WriteLine("=========================");
+            Console.WriteLine($" Ano de publicação: {lv.Value.Ano}");
         }
     }
 
     public static void VincularLivro()
     {
+        
         Console.WriteLine("Digite o nome do leitor no sistema:");
         string? nomeSistemaLeitor = Console.ReadLine();
 
         if (!Leitores.TryGetValue(nomeSistemaLeitor, out Leitor? leitor))
         {
+       
         Console.WriteLine("Leitor não encontrado!");
         return;
         }
@@ -91,6 +111,7 @@ public static class FuncoesBiblioteca
 
         if (!Livros.TryGetValue(nomeSistemaLivro, out Livro? livro))
         {
+            
             Console.WriteLine("Livro não encontrado!");
             return;
         }
@@ -154,6 +175,7 @@ public static class FuncoesBiblioteca
 
     if (!leitorDoador.TemLivro(livro))
     {
+    
         Console.WriteLine($"O livro '{livro.Titulo}' não está com o leitor '{leitorDoador.Nome}'!");
         return;
     }
