@@ -99,7 +99,7 @@ public static class FuncoesBiblioteca
 
     public static void VincularLivro()
     {
-        
+        Console.Clear();
         Console.WriteLine("Digite o nome do leitor no sistema:");
         string? nomeSistemaLeitor = Console.ReadLine();
 
@@ -126,6 +126,7 @@ public static class FuncoesBiblioteca
 
     public static void DesvincularLivro()
     {
+        Console.Clear();
         Console.WriteLine("Digite o nome do leitor no sistema:");
         string? nomeSistemaLeitor = Console.ReadLine();
 
@@ -150,6 +151,7 @@ public static class FuncoesBiblioteca
 
     public static void DoarLivro()
 {
+    Console.Clear();
     Console.WriteLine("Digite o nome do leitor doador no sistema:");
     string? nomeSistemaDoador = Console.ReadLine();
 
