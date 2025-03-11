@@ -14,10 +14,14 @@ public static class FuncoesBiblioteca
 
         Console.WriteLine("Digite um nome para o leitor: ");
         String? nome = Console.ReadLine();
+        Console.WriteLine("=======================");
         Console.WriteLine("Digite um CPF do leitor: ");
         BigInteger.TryParse(Console.ReadLine(), out cpf);
+        Console.WriteLine("=======================");
         Console.WriteLine("Digite um nome para armazenar esse leitor no sistema: ");
         string? NomeSitema = Console.ReadLine();
+        Console.WriteLine("=======================");
+    
         List<Livro> listaLeitor1 = new List<Livro>();
 
         Leitor  NovoLeitor = new Leitor(nome, cpf);
@@ -28,7 +32,7 @@ public static class FuncoesBiblioteca
 
     public static void Listarleitores()
     {
-        Console.Clear();
+        
         if(Leitores.Count == 0){
             Console.WriteLine("Nenhum leitor cadastrado. ");
             return;
