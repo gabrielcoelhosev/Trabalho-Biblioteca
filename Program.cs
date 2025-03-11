@@ -8,8 +8,23 @@ public class Program
         {
             Console.WriteLine("\t \t \t \t \t \t Bem Vindo a Bibliotéca do Zé!");
             Console.WriteLine("==================================================================================================================");
-            Console.WriteLine("Digite 1 para cadastrar um leitor \n 2 para listar os leitores \n 3 cadastrar um livro \n 4 para listar os livros");
-            Console.Write("Digite 5 para vincular um livro a um leitor \n 6 para desvincular o livro a um leitor \n 7 para doar um livro \n 8 para sair");
+            Console.WriteLine("Digite (1) para cadastrar um leitor");
+            Console.WriteLine("=========================");
+            Console.WriteLine("(2) para listar os leitores");
+            Console.WriteLine("==========================");
+            Console.WriteLine("3 para cadastrar um livro ");
+            Console.WriteLine("==========================");
+            Console.WriteLine("4 ´para listar os livros ");
+            Console.WriteLine("==========================");
+            Console.WriteLine("Digite 5 para vincular um livro a um leitor");
+            Console.WriteLine("==========================");
+            Console.WriteLine("(6) para desvincular o liro de um leiotr ");
+            Console.WriteLine("==========================");
+            Console.WriteLine("(7) para doar um livro ");
+            Console.WriteLine("==========================");
+            Console.WriteLine("(8) para sair ");
+            Console.WriteLine("==========================");
+
             var Resposta = Console.ReadLine();
 
             switch (Resposta)
