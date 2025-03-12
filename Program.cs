@@ -5,7 +5,7 @@ public class Program
     public static void Main(string[] args)
     {       
         while (true)
-    
+        
         {
             
             Console.WriteLine("\t \t \t \t \t \t Bem Vindo a Bibliotéca do Zé!");
@@ -32,27 +32,35 @@ public class Program
             switch (Resposta)
             {
                 case "1":
+                Console.Clear();
                     FuncoesBiblioteca.CadastrarLeitor();
                     break;
                 
                 case "2":
+                 Console.Clear();
                     FuncoesBiblioteca.Listarleitores();
                     break;
                 case "3":
+                Console.Clear();
                    FuncoesBiblioteca.CadastrarLivro();
                    break;
                 case "4":
+                Console.Clear();
                     FuncoesBiblioteca.ListarLivros();
                     break;
                 case "5":
+                Console.Clear();
                     FuncoesBiblioteca.VincularLivro();
                     break;
                 case "6":
+                Console.Clear();
                     FuncoesBiblioteca.DesvincularLivro();
                     break;
                 case "7":
+                Console.Clear();
                     FuncoesBiblioteca.DoarLivro();
                     break;
+                    Console.Clear();
                 case "8":
                     return;
                 default:
