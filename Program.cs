@@ -60,11 +60,11 @@ public class Program
                 Console.Clear();
                     FuncoesBiblioteca.DoarLivro();
                     break;
-                    Console.Clear();
+                    
                 case "8":
+                    Console.WriteLine("Saindo...");
                     return;
                 default:
-                    Console.WriteLine("Saindo...");
                     break; 
             } 
            

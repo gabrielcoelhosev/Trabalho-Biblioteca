@@ -49,7 +49,7 @@ public static class FuncoesBiblioteca
             Console.ResetColor();
             Console.WriteLine("=====================");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"CPF{par.Value.Cpf}");
+            Console.WriteLine($"CPF: {par.Value.Cpf}");
             Console.ResetColor();
             Console.WriteLine("=====================");
             par.Value.ExibirLivros();
