@@ -13,13 +13,15 @@
             Console.WriteLine("criado por: gabriel coelho severino e leandro jader");
             Console.ResetColor();
             Console.WriteLine("1. Cadastrar Leitor");
-            Console.WriteLine("2. Editar Leitor");
-            Console.WriteLine("3. Excluir Leitor");
+            Console.WriteLine("2. Listar Leitores e seus Livros");
+            Console.WriteLine("3. Editar Leitor");
+            Console.WriteLine("4. Excluir Leitor");
+            Console.WriteLine("4. Listar Leitores e seus Livros");
             Console.WriteLine("4. Cadastrar Livro");
             Console.WriteLine("5. Editar Livro");
             Console.WriteLine("6. Remover Livro");
-            Console.WriteLine("7. Doar Livro");
-            Console.WriteLine("8. Listar Todos os Leitores e seus Livros");
+            Console.WriteLine("7. remover livro");
+            Console.WriteLine("8. doar livro");
             Console.WriteLine("9. Listar Livros de um Leitor Específico");
             Console.WriteLine("10. Buscar Livro por Título");
             Console.WriteLine("11. Sair");
@@ -35,31 +37,31 @@
                     break;
                 case "2":
                 Console.Clear();
-                    Biblioteca.EditarLeitor();
+                    Biblioteca.ListarLeitores();
                     break;
                 case "3":
                 Console.Clear();
-                    Biblioteca.ExcluirLeitor();
+                    Biblioteca.EditarLeitor();
                     break;
                 case "4":
                 Console.Clear();
-                    Biblioteca.CadastrarLivro();
+                    Biblioteca.ExcluirLeitor();
                     break;
                 case "5":
                 Console.Clear();
-                    Biblioteca.EditarLivro();
+                    Biblioteca.CadastrarLivro();
                     break;
                 case "6":
                 Console.Clear();
-                    Biblioteca.RemoverLivro();
+                    Biblioteca.EditarLivro();
                     break;
                 case "7":
                 Console.Clear();
-                    Biblioteca.DoarLivro();
+                    Biblioteca.RemoverLivro();
                     break;
                 case "8":
                 Console.Clear();
-                    Biblioteca.ListarLeitores();
+                    Biblioteca.DoarLivro();
                     break;
                 case "9":
                 Console.Clear();

@@ -239,6 +239,6 @@ class Biblioteca
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("Livro encontrado:");
         livro.ExibirDados();
-        Console.ResetColor();
+        Console.ResetColor();              //leandro jader e gabriel coelho severino
     }
 }
