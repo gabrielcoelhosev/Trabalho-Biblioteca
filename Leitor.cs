@@ -38,12 +38,13 @@ class Leitor
         }
         else
         {
-            foreach (var livro in Livros)
+            foreach (var livro in Livros)                           //leandro jader e gabriel coelho
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"- {livro.Titulo} ({livro.Ano}) - Autor: {livro.Escritor}");
                 Console.ResetColor();
             }
-        }
+        }               
+        
     }
-}
+}                           
