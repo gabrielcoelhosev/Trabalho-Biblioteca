@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 class Leitor
 {
     public string Nome { get; set; }
@@ -26,25 +23,18 @@ class Leitor
 
     public void ExibirLivros()
     {
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"Livros de {Nome} (CPF: {Cpf}):");
-        Console.ResetColor();
-
         if (Livros.Count == 0)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Nenhum livro cadastrado.");
-            Console.ResetColor();
+            Console.WriteLine("Nenhum livro associado a este leitor.");
+            return;
         }
-        else
+
+        Console.WriteLine($"Livros de {Nome}:");
+        foreach (var livro in Livros)
         {
-            foreach (var livro in Livros)                           //leandro jader e gabriel coelho
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"- {livro.Titulo} ({livro.Ano}) - Autor: {livro.Escritor}");
-                Console.ResetColor();
-            }
-        }               
-        
+            livro.ExibirDados();
+        }
     }
-}                           
+
+    //leandro jader e gabriel coelho severino
+}

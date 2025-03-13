@@ -13,10 +13,9 @@ class Livro
         Ano = ano;
     }
 
-    public void ExibirDados()       
+    public void ExibirDados()
     {
-        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"Título: {Titulo}, Autor: {Escritor}, Gênero: {Genero}, Ano: {Ano}");
-        Console.ResetColor();
     }
 }
+//leandro jader e gabriel coelho severino

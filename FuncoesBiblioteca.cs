@@ -242,10 +242,28 @@ class Biblioteca
         Console.ResetColor();
     }
 
+    public static void ListarLivrosCadastrados()
+    {
+        if (livros.Count == 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Nenhum livro cadastrado.");
+            Console.ResetColor();
+            return;
+        }
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Livros cadastrados:");
+        foreach (var livro in livros)
+        {
+            livro.ExibirDados();
+        }
+        Console.ResetColor();
+    }
 
     public static void AtribuirLivroALeitor()
     {
-        Console.WriteLine("Digite o CPF do leitor para atribuir o livro:");
+        Console.WriteLine("Digite o CPF do leitor:");
         string cpf = Console.ReadLine();
 
         if (!leitores.ContainsKey(cpf))
@@ -271,11 +289,18 @@ class Biblioteca
             return;
         }
 
-       
+        if (leitor.Livros.Contains(livro))
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Este livro já está atribuído a este leitor.");
+            Console.ResetColor();
+            return;
+        }
+
         leitor.AdicionarLivro(livro);
 
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"Livro '{livro.Titulo}' atribuído ao leitor {leitor.Nome}.");
+        Console.WriteLine($"Livro '{livro.Titulo}' atribuído ao leitor {leitor.Nome} com sucesso.");
         Console.ResetColor();
-    }             //leandro jader e gabriel coelho severino
+    }                                      //leandro jader e gabriel coelho severino
 }
