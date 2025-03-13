@@ -16,10 +16,8 @@
             Console.WriteLine("2. Listar Leitores e seus Livros");
             Console.WriteLine("3. Editar Leitor");
             Console.WriteLine("4. Excluir Leitor");
-            Console.WriteLine("4. Listar Leitores e seus Livros");
-            Console.WriteLine("4. Cadastrar Livro");
-            Console.WriteLine("5. Editar Livro");
-            Console.WriteLine("6. Remover Livro");
+            Console.WriteLine("5. cadastrar livro");
+            Console.WriteLine("6. editar livro");
             Console.WriteLine("7. remover livro");
             Console.WriteLine("8. doar livro");
             Console.WriteLine("9. Listar Livros de um Leitor Específico");
