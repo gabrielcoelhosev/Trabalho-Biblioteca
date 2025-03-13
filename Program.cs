@@ -1,73 +1,84 @@
-﻿using System.Numerics;
-
-public class Program
+﻿class Program
 {
-    public static void Main(string[] args)
-    {       
-        while (true)
-        
+    static void Main()
+    {
+        bool rodando = true;
+
+        while (rodando)
         {
+            Console.WriteLine("\t\t\t\t\t biblioteca do zé");
             
-            Console.WriteLine("\t \t \t \t \t \t Bem Vindo a Bibliotéca do Zé!");
-            Console.WriteLine("==================================================================================================================");
-            Console.WriteLine("Digite (1) para cadastrar um leitor");
-            Console.WriteLine("=========================");
-            Console.WriteLine("(2) para listar os leitores");
-            Console.WriteLine("==========================");
-            Console.WriteLine("(3) para cadastrar um livro ");
-            Console.WriteLine("==========================");
-            Console.WriteLine("(4) para listar os livros ");
-            Console.WriteLine("==========================");
-            Console.WriteLine("(5) para vincular um livro a um leitor");
-            Console.WriteLine("==========================");
-            Console.WriteLine("(6) para desvincular o liro de um leiotr ");
-            Console.WriteLine("==========================");
-            Console.WriteLine("(7) para doar um livro ");
-            Console.WriteLine("==========================");
-            Console.WriteLine("(8) para sair ");
-            Console.WriteLine("==========================");
+            Console.WriteLine("===============================================================================================");
+            Console.ForegroundColor=ConsoleColor.Green;
+            Console.WriteLine("criado por: gabriel coelho severino e leandro jader");
+            Console.ResetColor();
+            Console.WriteLine("1. Cadastrar Leitor");
+            Console.WriteLine("2. Editar Leitor");
+            Console.WriteLine("3. Excluir Leitor");
+            Console.WriteLine("4. Cadastrar Livro");
+            Console.WriteLine("5. Editar Livro");
+            Console.WriteLine("6. Remover Livro");
+            Console.WriteLine("7. Doar Livro");
+            Console.WriteLine("8. Listar Todos os Leitores e seus Livros");
+            Console.WriteLine("9. Listar Livros de um Leitor Específico");
+            Console.WriteLine("10. Buscar Livro por Título");
+            Console.WriteLine("11. Sair");
+            Console.Write("Escolha uma opção: ");
 
-            var Resposta = Console.ReadLine();
+            string opcao = Console.ReadLine();
 
-            switch (Resposta)
+            switch (opcao)
             {
                 case "1":
                 Console.Clear();
-                    FuncoesBiblioteca.CadastrarLeitor();
+                    Biblioteca.CadastrarLeitor();
                     break;
-                
                 case "2":
-                 Console.Clear();
-                    FuncoesBiblioteca.Listarleitores();
+                Console.Clear();
+                    Biblioteca.EditarLeitor();
                     break;
                 case "3":
                 Console.Clear();
-                   FuncoesBiblioteca.CadastrarLivro();
-                   break;
+                    Biblioteca.ExcluirLeitor();
+                    break;
                 case "4":
                 Console.Clear();
-                    FuncoesBiblioteca.ListarLivros();
+                    Biblioteca.CadastrarLivro();
                     break;
                 case "5":
                 Console.Clear();
-                    FuncoesBiblioteca.VincularLivro();
+                    Biblioteca.EditarLivro();
                     break;
                 case "6":
                 Console.Clear();
-                    FuncoesBiblioteca.DesvincularLivro();
+                    Biblioteca.RemoverLivro();
                     break;
                 case "7":
                 Console.Clear();
-                    FuncoesBiblioteca.DoarLivro();
+                    Biblioteca.DoarLivro();
                     break;
-                    
                 case "8":
-                    Console.WriteLine("Saindo...");
-                    return;
+                Console.Clear();
+                    Biblioteca.ListarLeitores();
+                    break;
+                case "9":
+                Console.Clear();
+                    Biblioteca.ListarLivrosDeUmLeitor();
+                    break;
+                case "10":
+                Console.Clear();
+                    Biblioteca.BuscarLivroPorTitulo();
+                    break;
+                case "11":
+                Console.Clear();
+                    rodando = false;
+                    break;
                 default:
-                    break; 
-            } 
-           
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    Console.ResetColor();
+                    break;
+            }
         }
     }
 }

@@ -1,11 +1,13 @@
-using System.Numerics;
+using System;
+using System.Collections.Generic;
+
 class Leitor
 {
-    public string Nome {get; set;}
-    public BigInteger Cpf {get; set;}
-    public List<Livro> Livros {get; set;}
+    public string Nome { get; set; }
+    public string Cpf { get; set; }
+    public List<Livro> Livros { get; set; }
 
-    public Leitor(string nome, BigInteger cpf)
+    public Leitor(string nome, string cpf)
     {
         Nome = nome;
         Cpf = cpf;
@@ -22,23 +24,26 @@ class Leitor
         Livros.Remove(livro);
     }
 
-    public bool TemLivro(Livro livro)
-    {
-        return Livros.Contains(livro);
-    }
-
     public void ExibirLivros()
     {
-        if(Livros.Count == 0)
-        {
-            Console.WriteLine("Nenhum Livro Vinculado");
-        }
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"Livros de {Nome} (CPF: {Cpf}):");
+        Console.ResetColor();
 
-        Console.WriteLine($"Livros de {Nome}");
-        foreach (var livro in Livros)
+        if (Livros.Count == 0)
         {
-            Console.WriteLine($"Título: {livro.Titulo}, Escrito por: {livro.Escritor}, Ano de publicação: {livro.Ano}, Gênero: {livro.Genero}");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Nenhum livro cadastrado.");
+            Console.ResetColor();
+        }
+        else
+        {
+            foreach (var livro in Livros)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"- {livro.Titulo} ({livro.Ano}) - Autor: {livro.Escritor}");
+                Console.ResetColor();
+            }
         }
     }
-
 }
