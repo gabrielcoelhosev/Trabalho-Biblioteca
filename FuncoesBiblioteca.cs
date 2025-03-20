@@ -1,31 +1,37 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
-class Biblioteca
+public class Biblioteca
 {
     private static Dictionary<string, Leitor> leitores = new Dictionary<string, Leitor>();
-    private static List<Livro> livros = new List<Livro>();
+    private static Dictionary<int, Livro> livros = new Dictionary<int, Livro>();
 
     public static void CadastrarLeitor()
     {
-        Console.WriteLine("Digite o nome do leitor:");
+        Console.Write("Nome do Leitor: ");
         string nome = Console.ReadLine();
-        Console.WriteLine("Digite o CPF do leitor:");
+
+        Console.Write("CPF do Leitor: ");
         string cpf = Console.ReadLine();
 
-        if (leitores.ContainsKey(cpf))
+        int idade;
+        do
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Leitor com esse CPF já cadastrado.");
-            Console.ResetColor();
-            return;
-        }
+            Console.Write("Idade do Leitor: ");
+            idade = int.Parse(Console.ReadLine());
+            if (idade <= 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("A idade não pode ser menor ou igual a zero.");
+                Console.ResetColor();
+            }
+        } while (idade <= 0);
 
-        Leitor novoLeitor = new Leitor(nome, cpf);
-        leitores[cpf] = novoLeitor;
+        Leitor leitor = new Leitor(nome, cpf, idade);
+        leitores.Add(cpf, leitor);
+
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Leitor cadastrado com sucesso.");
+        Console.WriteLine("Leitor cadastrado com sucesso!");
         Console.ResetColor();
     }
 
@@ -41,204 +47,93 @@ class Biblioteca
 
         foreach (var leitor in leitores.Values)
         {
-            Console.WriteLine("==================================");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Leitor: {leitor.Nome} (CPF: {leitor.Cpf})");
-            leitor.ExibirLivros();
-            Console.ResetColor();
+            Console.WriteLine($"Nome: {leitor.Nome}, CPF: {leitor.Cpf}, Idade: {leitor.Idade}");
         }
     }
 
     public static void EditarLeitor()
     {
-        Console.WriteLine("Digite o CPF do leitor para editar:");
+        Console.Write("Digite o CPF do leitor que deseja editar: ");
         string cpf = Console.ReadLine();
 
-        if (!leitores.ContainsKey(cpf))
+        if (leitores.ContainsKey(cpf))
+        {
+            Leitor leitor = leitores[cpf];
+            Console.WriteLine($"Editando Leitor: {leitor.Nome}");
+
+            Console.Write("Novo nome (deixe em branco para manter o nome atual): ");
+            string novoNome = Console.ReadLine();
+            if (!string.IsNullOrEmpty(novoNome)) leitor.Nome = novoNome;
+
+            Console.Write("Nova idade (deixe em branco para manter a idade atual): ");
+            string novaIdadeStr = Console.ReadLine();
+            if (!string.IsNullOrEmpty(novaIdadeStr))
+            {
+                int novaIdade = int.Parse(novaIdadeStr);
+                if (novaIdade > 0) leitor.Idade = novaIdade;
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("A idade não pode ser menor ou igual a zero.");
+                    Console.ResetColor();
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Leitor editado com sucesso!");
+            Console.ResetColor();
+        }
+        else
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Leitor não encontrado.");
             Console.ResetColor();
-            return;
         }
-
-        Leitor leitor = leitores[cpf];
-        Console.WriteLine("Digite o novo nome do leitor:");
-        leitor.Nome = Console.ReadLine();
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Leitor atualizado com sucesso.");
-        Console.ResetColor();
     }
 
     public static void ExcluirLeitor()
     {
-        Console.WriteLine("Digite o CPF do leitor para excluir:");
+        Console.Write("Digite o CPF do leitor que deseja excluir: ");
         string cpf = Console.ReadLine();
 
-        if (!leitores.ContainsKey(cpf))
+        if (leitores.ContainsKey(cpf))
+        {
+            leitores.Remove(cpf);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Leitor excluído com sucesso!");
+            Console.ResetColor();
+        }
+        else
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Leitor não encontrado.");
             Console.ResetColor();
-            return;
         }
-
-        leitores.Remove(cpf);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Leitor excluído com sucesso.");
-        Console.ResetColor();
     }
 
     public static void CadastrarLivro()
     {
-        Console.WriteLine("Digite o título do livro:");
+        Console.Write("Código do Livro: ");
+        int codigo = int.Parse(Console.ReadLine());
+
+        Console.Write("Título do Livro: ");
         string titulo = Console.ReadLine();
-        Console.WriteLine("Digite o autor do livro:");
+
+        Console.Write("Autor do Livro: ");
         string autor = Console.ReadLine();
-        Console.WriteLine("Digite o gênero do livro:");
+
+        Console.Write("Gênero do Livro: ");
         string genero = Console.ReadLine();
-        Console.WriteLine("Digite o ano de publicação do livro:");
+
+        Console.Write("Ano do Livro: ");
         int ano = int.Parse(Console.ReadLine());
+       
 
-        Livro novoLivro = new Livro(titulo, autor, genero, ano);
-        livros.Add(novoLivro);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Livro cadastrado com sucesso.");
-        Console.ResetColor();
-    }
-
-    public static void EditarLivro()
-    {
-        Console.WriteLine("Digite o título do livro para editar:");
-        string titulo = Console.ReadLine();
-
-        Livro livro = livros.FirstOrDefault(l => l.Titulo.Equals(titulo, StringComparison.OrdinalIgnoreCase));
-
-        if (livro == null)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Livro não encontrado.");
-            Console.ResetColor();
-            return;
-        }
-
-        Console.WriteLine("Digite o novo título do livro:");
-        livro.Titulo = Console.ReadLine();
-        Console.WriteLine("Digite o novo autor do livro:");
-        livro.Escritor = Console.ReadLine();
-        Console.WriteLine("Digite o novo gênero do livro:");
-        livro.Genero = Console.ReadLine();
-        Console.WriteLine("Digite o novo ano de publicação do livro:");
-        livro.Ano = int.Parse(Console.ReadLine());
+        Livro livro = new Livro(codigo, titulo, autor, genero, ano);
+        livros.Add(codigo, livro);
 
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Livro atualizado com sucesso.");
-        Console.ResetColor();
-    }
-
-    public static void RemoverLivro()
-    {
-        Console.WriteLine("Digite o título do livro para remover:");
-        string titulo = Console.ReadLine();
-
-        Livro livro = livros.FirstOrDefault(l => l.Titulo.Equals(titulo, StringComparison.OrdinalIgnoreCase));
-
-        if (livro == null)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Livro não encontrado.");
-            Console.ResetColor();
-            return;
-        }
-
-        livros.Remove(livro);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Livro removido com sucesso.");
-        Console.ResetColor();
-    }
-
-    public static void DoarLivro()
-    {
-        Console.WriteLine("Digite o CPF do leitor doador:");
-        string cpfDoador = Console.ReadLine();
-
-        if (!leitores.ContainsKey(cpfDoador))
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Leitor doador não encontrado.");
-            Console.ResetColor();
-            return;
-        }
-
-        Leitor doador = leitores[cpfDoador];
-
-        Console.WriteLine("Digite o CPF do leitor receptor:");
-        string cpfReceptor = Console.ReadLine();
-
-        if (!leitores.ContainsKey(cpfReceptor))
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Leitor receptor não encontrado.");
-            Console.ResetColor();
-            return;
-        }
-
-        Leitor receptor = leitores[cpfReceptor];
-
-        Console.WriteLine("Digite o título do livro a doar:");
-        string titulo = Console.ReadLine();
-
-        Livro livro = doador.Livros.FirstOrDefault(l => l.Titulo.Equals(titulo, StringComparison.OrdinalIgnoreCase));
-
-        if (livro == null)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Livro não encontrado.");
-            Console.ResetColor();
-            return;
-        }
-
-        doador.RemoverLivro(livro);
-        receptor.AdicionarLivro(livro);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"Livro '{livro.Titulo}' doado de {doador.Nome} para {receptor.Nome}.");
-        Console.ResetColor();
-    }
-
-    public static void ListarLivrosDeUmLeitor()
-    {
-        Console.WriteLine("Digite o CPF do leitor para listar seus livros:");
-        string cpf = Console.ReadLine();
-
-        if (!leitores.ContainsKey(cpf))
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Leitor não encontrado.");
-            Console.ResetColor();
-            return;
-        }
-
-        leitores[cpf].ExibirLivros();
-    }
-
-    public static void BuscarLivroPorTitulo()
-    {
-        Console.WriteLine("Digite o título do livro para buscar:");
-        string titulo = Console.ReadLine();
-
-        Livro livro = livros.FirstOrDefault(l => l.Titulo.Equals(titulo, StringComparison.OrdinalIgnoreCase));
-
-        if (livro == null)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Livro não encontrado.");
-            Console.ResetColor();
-            return;
-        }
-
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Livro encontrado:");
-        livro.ExibirDados();
+        Console.WriteLine("Livro cadastrado com sucesso!");
         Console.ResetColor();
     }
 
@@ -252,55 +147,159 @@ class Biblioteca
             return;
         }
 
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Livros cadastrados:");
-        foreach (var livro in livros)
+        foreach (var livro in livros.Values)
         {
             livro.ExibirDados();
         }
-        Console.ResetColor();
     }
 
     public static void AtribuirLivroALeitor()
     {
-        Console.WriteLine("Digite o CPF do leitor:");
-        string cpf = Console.ReadLine();
+        Console.Write("Digite o CPF do leitor: ");
+        string cpfLeitor = Console.ReadLine();
 
-        if (!leitores.ContainsKey(cpf))
+        if (leitores.ContainsKey(cpfLeitor))
+        {
+            Console.Write("Digite o código do livro a ser atribuído: ");
+            int codigoLivro = int.Parse(Console.ReadLine());
+
+            if (livros.ContainsKey(codigoLivro))
+            {
+                Leitor leitor = leitores[cpfLeitor];
+                Livro livro = livros[codigoLivro];
+                leitor.AdicionarLivro(livro);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Livro {livro.Titulo} atribuído a {leitor.Nome}.");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Livro não encontrado.");
+                Console.ResetColor();
+            }
+        }
+        else
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Leitor não encontrado.");
             Console.ResetColor();
-            return;
         }
+    }
 
-        Leitor leitor = leitores[cpf];
+    public static void ListarLivrosDeUmLeitor()
+    {
+        Console.Write("Digite o CPF do leitor: ");
+        string cpfLeitor = Console.ReadLine();
 
-        Console.WriteLine("Digite o título do livro para atribuir:");
-        string titulo = Console.ReadLine();
+        if (leitores.ContainsKey(cpfLeitor))
+        {
+            Leitor leitor = leitores[cpfLeitor];
+            leitor.ExibirLivros();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Leitor não encontrado.");
+            Console.ResetColor();
+        }
+    }
 
-        Livro livro = livros.FirstOrDefault(l => l.Titulo.Equals(titulo, StringComparison.OrdinalIgnoreCase));
+    public static void RemoverLivro()
+    {
+        Console.Write("Digite o código do livro a ser removido: ");
+        int codigoLivro = int.Parse(Console.ReadLine());
 
-        if (livro == null)
+        if (livros.ContainsKey(codigoLivro))
+        {
+            livros.Remove(codigoLivro);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Livro removido com sucesso!");
+            Console.ResetColor();
+        }
+        else
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Livro não encontrado.");
             Console.ResetColor();
-            return;
         }
+    }
 
-        if (leitor.Livros.Contains(livro))
+    public static void DoarLivro()
+    {
+        Console.Write("Digite o CPF do leitor que vai doar o livro: ");
+        string cpfLeitor = Console.ReadLine();
+
+        if (leitores.ContainsKey(cpfLeitor))
+        {
+            Leitor leitor = leitores[cpfLeitor];
+
+            Console.Write("Digite o código do livro a ser doado: ");
+            int codigoLivro = int.Parse(Console.ReadLine());
+
+            if (livros.ContainsKey(codigoLivro))
+            {
+                Livro livro = livros[codigoLivro];
+                leitor.RemoverLivro(livro);
+                livros.Remove(codigoLivro);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Livro {livro.Titulo} doado com sucesso.");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Livro não encontrado.");
+                Console.ResetColor();
+            }
+        }
+        else
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Este livro já está atribuído a este leitor.");
+            Console.WriteLine("Leitor não encontrado.");
             Console.ResetColor();
-            return;
         }
+    }
 
-        leitor.AdicionarLivro(livro);
+    public static void EditarLivro()
+    {
+        Console.Write("Digite o código do livro que deseja editar: ");
+        int codigo = int.Parse(Console.ReadLine());
 
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"Livro '{livro.Titulo}' atribuído ao leitor {leitor.Nome} com sucesso.");
-        Console.ResetColor();
-    }                                      //leandro jader e gabriel coelho severino
+        if (livros.ContainsKey(codigo))
+        {
+            Livro livro = livros[codigo];
+            Console.WriteLine($"Editando livro: {livro.Titulo}");
+
+            Console.Write("Novo título (deixe em branco para manter o título atual): ");
+            string novoTitulo = Console.ReadLine();
+            if (!string.IsNullOrEmpty(novoTitulo)) livro.Titulo = novoTitulo;
+
+            Console.Write("Novo autor (deixe em branco para manter o autor atual): ");
+            string novoAutor = Console.ReadLine();
+            if (!string.IsNullOrEmpty(novoAutor)) livro.Escritor = novoAutor;
+
+            Console.Write("Novo gênero (deixe em branco para manter o gênero atual): ");
+            string novoGenero = Console.ReadLine();
+            if (!string.IsNullOrEmpty(novoGenero)) livro.Genero = novoGenero;
+
+            Console.Write("Novo ano (deixe em branco para manter o ano atual): ");
+            string novoAnoStr = Console.ReadLine();
+            if (!string.IsNullOrEmpty(novoAnoStr))
+            {
+                int novoAno = int.Parse(novoAnoStr);
+                livro.Ano = novoAno;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Livro editado com sucesso!");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Livro não encontrado.");
+            Console.ResetColor();
+        }
+    }
 }

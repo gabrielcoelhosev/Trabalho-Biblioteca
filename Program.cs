@@ -1,4 +1,6 @@
-﻿class Program
+﻿using System;
+
+class Program
 {
     static void Main()
     {
@@ -8,7 +10,7 @@
         {
             Console.WriteLine("\t\t\t\t\t biblioteca do zé");
             Console.WriteLine("===============================================================================================");
-            Console.ForegroundColor=ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("trabalho feito por : Gabriel Coelho Severino e Leandro Jader");
             Console.ResetColor();
             Console.WriteLine("1. Cadastrar Leitor");
@@ -18,10 +20,10 @@
             Console.WriteLine("5. Cadastrar Livro");
             Console.WriteLine("6. Editar Livro");
             Console.WriteLine("7. Atribuir Livro a um Leitor");
-            Console.WriteLine("8. listar livros cadastrados");
+            Console.WriteLine("8. Listar Livros Cadastrados");
             Console.WriteLine("9. Listar Livros de um Leitor");
             Console.WriteLine("10. Remover Livro da Biblioteca");
-            Console.WriteLine("11. doar livro");
+            Console.WriteLine("11. Doar Livro");
             Console.WriteLine("0. Sair");
             Console.ResetColor();
 
@@ -65,12 +67,11 @@
                     Console.Clear();
                     Biblioteca.ListarLivrosDeUmLeitor();
                     break;
-             
                 case "10":
                     Console.Clear();
-                    Biblioteca.RemoverLivro();  
+                    Biblioteca.RemoverLivro();
                     break;
-                case "11":  
+                case "11":
                     Console.Clear();
                     Biblioteca.DoarLivro();
                     break;
@@ -86,4 +87,3 @@
         }
     }
 }
-//leandro jader e gabriel coelho severino
