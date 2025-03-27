@@ -73,6 +73,7 @@ public class Leitor
             Console.WriteLine($"Livros de {Nome}:");
             foreach (var livro in Livros)
             {
+             
                 livro.ExibirDados();
             }
         }
