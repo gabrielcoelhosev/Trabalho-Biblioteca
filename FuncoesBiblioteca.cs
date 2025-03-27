@@ -118,8 +118,22 @@ public class Biblioteca
 
     public static void CadastrarLivro()
     {
-        Console.Write("Código do Livro: ");
-        int codigo = int.Parse(Console.ReadLine());
+        int codigo;
+        while (true)
+        {
+            try
+            {
+                Console.Write("Código do Livro: ");
+                codigo = int.Parse(Console.ReadLine());
+                break;
+            }
+            catch (FormatException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Por favor, insira um número válido para o código do livro.");
+                Console.ResetColor();
+            }
+        }
 
         Console.Write("Título do Livro: ");
         string titulo = Console.ReadLine();
@@ -130,14 +144,58 @@ public class Biblioteca
         Console.Write("Gênero do Livro: ");
         string genero = Console.ReadLine();
 
-        Console.Write("Ano do Livro: ");
-        int ano = int.Parse(Console.ReadLine());
+        int ano;
+        while (true)
+        {
+            try
+            {
+                Console.Write("Ano do Livro: ");
+                ano = int.Parse(Console.ReadLine());
+                if (ano < 1970 || ano > DateTime.Now.Year)
+                    throw new ArgumentException("O ano deve estar entre 1970 e o ano atual.");
+                break;
+            }
+            catch (FormatException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Por favor, insira um ano válido.");
+                Console.ResetColor();
+            }
+            catch (ArgumentException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(ex.Message);
+                Console.ResetColor();
+            }
+        }
 
         Console.Write("ISBN do Livro: ");
         string isbn = Console.ReadLine();
 
-        Console.Write("Número de Páginas: ");
-        int numeroDePaginas = int.Parse(Console.ReadLine());
+        int numeroDePaginas;
+        while (true)
+        {
+            try
+            {
+                Console.Write("Número de Páginas: ");
+                numeroDePaginas = int.Parse(Console.ReadLine());
+                if (numeroDePaginas <= 0)
+                    throw new ArgumentException("O número de páginas deve ser maior que zero.");
+                break;
+            }
+            catch (FormatException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Por favor, insira um número válido para o número de páginas.");
+                Console.ResetColor();
+            }
+            catch (ArgumentException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(ex.Message);
+                Console.ResetColor();
+            }
+        }
 
         Livro livro = new Livro(codigo, titulo, autor, genero, ano, isbn, numeroDePaginas);
         livros.Add(codigo, livro);
@@ -146,6 +204,7 @@ public class Biblioteca
         Console.WriteLine("Livro cadastrado com sucesso!");
         Console.ResetColor();
     }
+
 
     public static void ListarLivrosCadastrados()
     {

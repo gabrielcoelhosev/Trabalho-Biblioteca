@@ -56,6 +56,7 @@ public class Livro
             if (value < 1970 || value > DateTime.Now.Year)
                 throw new ArgumentException("Ano de publicação inválido. O ano deve estar entre 1970 e o ano atual.");
             ano = value;
+                return;
         }
     }
 
