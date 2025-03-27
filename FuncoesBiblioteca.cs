@@ -159,7 +159,7 @@ public class Biblioteca
 
         foreach (var livro in livros.Values)
         {
-            livro.ExibirDados();
+            Console.WriteLine(livro.ExibirDados());
         }
     }
 

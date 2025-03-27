@@ -80,8 +80,8 @@ public class Livro
         NumeroDePaginas = numeroDePaginas;
     }
 
-    public void ExibirDados()
+    public string ExibirDados()
     {
-        Console.WriteLine($"ISBN: {Isbn}, Título: {Titulo}, Autor: {Escritor}, Gênero: {Genero}, Ano: {Ano}, Páginas: {NumeroDePaginas}");
+        return $"ISBN: {Isbn}, Título: {Titulo}, Autor: {Escritor}, Gênero: {Genero}, Ano: {Ano}, Páginas: {NumeroDePaginas}";
     }
 }
