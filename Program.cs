@@ -10,7 +10,7 @@ class Program
             Console.WriteLine("\t\t\t\t\t biblioteca do zé");
             Console.WriteLine("===============================================================================================");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("trabalho feito por : Gabriel Coelho Severino e Leandro Jader");
+            Console.WriteLine("trabalho feito por : Gabriel Coelho Severino, Leandro Jader e Kauan");
             Console.ResetColor();
             Console.WriteLine("1. Cadastrar Leitor");
             Console.WriteLine("2. Listar Leitores");
