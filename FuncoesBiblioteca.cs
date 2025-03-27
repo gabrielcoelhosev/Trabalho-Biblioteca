@@ -6,6 +6,11 @@ public class Biblioteca
     private static Dictionary<string, Leitor> leitores = new Dictionary<string, Leitor>();
     private static Dictionary<int, Livro> livros = new Dictionary<int, Livro>();
 
+    public static bool VerificarCpfExistente(string cpf)
+    {
+        return leitores.ContainsKey(cpf);
+    }
+
     public static void CadastrarLeitor()
     {
         Console.Write("Nome do Leitor: ");
@@ -127,9 +132,14 @@ public class Biblioteca
 
         Console.Write("Ano do Livro: ");
         int ano = int.Parse(Console.ReadLine());
-       
 
-        Livro livro = new Livro(codigo, titulo, autor, genero, ano);
+        Console.Write("ISBN do Livro: ");
+        string isbn = Console.ReadLine();
+
+        Console.Write("Número de Páginas: ");
+        int numeroDePaginas = int.Parse(Console.ReadLine());
+
+        Livro livro = new Livro(codigo, titulo, autor, genero, ano, isbn, numeroDePaginas);
         livros.Add(codigo, livro);
 
         Console.ForegroundColor = ConsoleColor.Green;
@@ -150,6 +160,44 @@ public class Biblioteca
         foreach (var livro in livros.Values)
         {
             livro.ExibirDados();
+        }
+    }
+
+    public static void EditarLivro()
+    {
+        Console.Write("Digite o código do livro que deseja editar: ");
+        int codigo = int.Parse(Console.ReadLine());
+
+        if (livros.ContainsKey(codigo))
+        {
+            Livro livro = livros[codigo];
+            Console.WriteLine($"Editando Livro: {livro.Titulo}");
+
+            Console.Write("Novo título (deixe em branco para manter o título atual): ");
+            string novoTitulo = Console.ReadLine();
+            if (!string.IsNullOrEmpty(novoTitulo)) livro.Titulo = novoTitulo;
+
+            Console.Write("Novo autor (deixe em branco para manter o autor atual): ");
+            string novoAutor = Console.ReadLine();
+            if (!string.IsNullOrEmpty(novoAutor)) livro.Escritor = novoAutor;
+
+            Console.Write("Novo ano (deixe em branco para manter o ano atual): ");
+            string novoAnoStr = Console.ReadLine();
+            if (!string.IsNullOrEmpty(novoAnoStr))
+            {
+                int novoAno = int.Parse(novoAnoStr);
+                livro.Ano = novoAno;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Livro editado com sucesso!");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Livro não encontrado.");
+            Console.ResetColor();
         }
     }
 
@@ -208,11 +256,11 @@ public class Biblioteca
     public static void RemoverLivro()
     {
         Console.Write("Digite o código do livro a ser removido: ");
-        int codigoLivro = int.Parse(Console.ReadLine());
+        int codigo = int.Parse(Console.ReadLine());
 
-        if (livros.ContainsKey(codigoLivro))
+        if (livros.ContainsKey(codigo))
         {
-            livros.Remove(codigoLivro);
+            livros.Remove(codigo);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Livro removido com sucesso!");
             Console.ResetColor();
@@ -227,72 +275,14 @@ public class Biblioteca
 
     public static void DoarLivro()
     {
-        Console.Write("Digite o CPF do leitor que vai doar o livro: ");
-        string cpfLeitor = Console.ReadLine();
-
-        if (leitores.ContainsKey(cpfLeitor))
-        {
-            Leitor leitor = leitores[cpfLeitor];
-
-            Console.Write("Digite o código do livro a ser doado: ");
-            int codigoLivro = int.Parse(Console.ReadLine());
-
-            if (livros.ContainsKey(codigoLivro))
-            {
-                Livro livro = livros[codigoLivro];
-                leitor.RemoverLivro(livro);
-                livros.Remove(codigoLivro);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Livro {livro.Titulo} doado com sucesso.");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Livro não encontrado.");
-                Console.ResetColor();
-            }
-        }
-        else
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Leitor não encontrado.");
-            Console.ResetColor();
-        }
-    }
-
-    public static void EditarLivro()
-    {
-        Console.Write("Digite o código do livro que deseja editar: ");
+        Console.Write("Digite o código do livro a ser doado: ");
         int codigo = int.Parse(Console.ReadLine());
 
         if (livros.ContainsKey(codigo))
         {
-            Livro livro = livros[codigo];
-            Console.WriteLine($"Editando livro: {livro.Titulo}");
-
-            Console.Write("Novo título (deixe em branco para manter o título atual): ");
-            string novoTitulo = Console.ReadLine();
-            if (!string.IsNullOrEmpty(novoTitulo)) livro.Titulo = novoTitulo;
-
-            Console.Write("Novo autor (deixe em branco para manter o autor atual): ");
-            string novoAutor = Console.ReadLine();
-            if (!string.IsNullOrEmpty(novoAutor)) livro.Escritor = novoAutor;
-
-            Console.Write("Novo gênero (deixe em branco para manter o gênero atual): ");
-            string novoGenero = Console.ReadLine();
-            if (!string.IsNullOrEmpty(novoGenero)) livro.Genero = novoGenero;
-
-            Console.Write("Novo ano (deixe em branco para manter o ano atual): ");
-            string novoAnoStr = Console.ReadLine();
-            if (!string.IsNullOrEmpty(novoAnoStr))
-            {
-                int novoAno = int.Parse(novoAnoStr);
-                livro.Ano = novoAno;
-            }
-
+            livros.Remove(codigo);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Livro editado com sucesso!");
+            Console.WriteLine("Livro doado com sucesso!");
             Console.ResetColor();
         }
         else
